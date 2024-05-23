@@ -9,8 +9,8 @@ const navLinks = [
 
 const Header = () => {
 	return (
-		<>
-			<header>
+		<header className="flex justify-between items-center py-4 px-7 border-b">
+			<Link href="/">
 				<Image
 					src="https://res.cloudinary.com/dxyptix0d/image/upload/v1716467037/npwz0olb9ycxwv2frmfn.png"
 					alt="Logo"
@@ -18,19 +18,21 @@ const Header = () => {
 					width="35"
 					height="35"
 				/>
-			</header>
+			</Link>
 			<nav>
-				<ul>
+				<ul className="flex gap-x-4 text-[14px]">
 					{navLinks.map((link) => {
 						return (
 							<li key={link.href}>
-								<Link href={link.href}>{link.label}</Link>
+								<Link className="text-zinc-400" href={link.href}>
+									{link.label}
+								</Link>
 							</li>
 						);
 					})}
 				</ul>
 			</nav>
-		</>
+		</header>
 	);
 };
 
