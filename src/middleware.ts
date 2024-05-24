@@ -1,5 +1,5 @@
 // cSpell: ignore kinde, nextjs
-import { withAuth } from "@kinde-oss/kinde-auth-nextjs/server";
+import { withAuth } from "@kinde-oss/kinde-auth-nextjs/middleware";
 import { NextRequest } from "next/server";
 
 export default function middleware(req: NextRequest) {
