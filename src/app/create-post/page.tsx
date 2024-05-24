@@ -1,5 +1,5 @@
+// cSpell: ignore kinde, nextjs
 import { createPost } from "@/actions/actions";
-import React from "react";
 
 const CreatePost = () => {
 	return (
