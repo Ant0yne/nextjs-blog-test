@@ -2,6 +2,7 @@
 // cSpell: words prisma
 
 import prisma from "@/lib/db";
+import { revalidatePath } from "next/cache";
 
 export const createPost = async (formData: FormData) => {
 	const title = formData.get("title") as string;
@@ -13,4 +14,6 @@ export const createPost = async (formData: FormData) => {
 			body,
 		},
 	});
+
+	revalidatePath("/posts");
 };
