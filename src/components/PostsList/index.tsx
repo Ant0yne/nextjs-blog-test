@@ -1,18 +1,15 @@
-import Link from "next/link";
+// cSpell: words prisma
 
-type Post = {
-	id: number;
-	title: string;
-};
+import prisma from "@/lib/db";
+import Link from "next/link";
 
 const PostsList = async () => {
 	// await new Promise((resolve) => setTimeout(resolve, 2000));
-	const response = await fetch("https://dummyjson.com/posts?limit=10");
-	const data = await response.json();
+	const posts = await prisma.post.findMany();
 
 	return (
 		<ul>
-			{data.posts.map((post: Post) => (
+			{posts.map((post) => (
 				<li key={post.id} className="mb-3">
 					<Link href={`/posts/${post.id}`}>{post.title}</Link>
 				</li>

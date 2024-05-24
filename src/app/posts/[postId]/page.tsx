@@ -1,6 +1,18 @@
+// cSpell: words prisma
+
+import prisma from "@/lib/db";
+import { notFound } from "next/navigation";
+
 const Post = async ({ params }: { params: { postId: string } }) => {
-	const response = await fetch(`https://dummyjson.com/posts/${params.postId}`);
-	const post = await response.json();
+	const post = await prisma.post.findUnique({
+		where: {
+			id: Number(params.postId),
+		},
+	});
+
+	if (!post) {
+		notFound();
+	}
 
 	return (
 		<main className="px-7 pt-24 text-center">
