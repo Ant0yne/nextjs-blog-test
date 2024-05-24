@@ -1,7 +1,16 @@
 "use server";
+// cSpell: words prisma
+
+import prisma from "@/lib/db";
 
 export const createPost = async (formData: FormData) => {
 	const title = formData.get("title") as string;
 	const body = formData.get("body") as string;
-	console.log(title);
+
+	await prisma.post.create({
+		data: {
+			title,
+			body,
+		},
+	});
 };
